@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Biography {
     public static void main(String[] args) {
 
@@ -31,7 +35,75 @@ public class Biography {
         Book{name='24 Hours in the Life of a Woman', tale='novella', page=80}
          */
 
-        //YOUR CODE HERE
+        Scanner input = new Scanner(System.in);
 
+        /*
+        What is your favorite author’s first name?
+
+        What is your favorite author’s last name?
+
+        Where is your favorite author from?
+
+        Is your favorite author alive? Y/N
+
+        If user enters Y, then ask How old is your favorite author? If, user enters N, then skip this question.
+
+        Then, program will ask about user’s favorite author’s books.
+         */
+
+        System.out.println("What is your favorite author’s first name?");
+        String firstName = input.nextLine();
+
+        System.out.println("What is your favorite author’s last name?");
+        String lastName = input.nextLine();
+
+        System.out.println("Where is your favorite author from?");
+        String country = input.nextLine();
+
+        System.out.println("Is your favorite author alive? Y/N");
+        String isAliveInput = input.nextLine();
+
+        while (!isAliveInput.equalsIgnoreCase("Y") && !isAliveInput.equalsIgnoreCase("N")) {
+            System.out.println("Input was invalid, please use only 'Y' or 'N'\n");
+            System.out.println("Is your favorite author alive? Y/N");
+            isAliveInput = input.nextLine();
+        }
+
+        boolean isAlive = isAliveInput.equalsIgnoreCase("Y");
+        int age = 0;
+
+        if (isAlive) {
+            System.out.println("What is the authors age?");
+            age = input.nextInt();
+            input.nextLine();
+        }
+
+        System.out.println("Would you like to enter book information? (Y/N)");
+        String bookCheck = input.nextLine();
+        List<Book> listOfBooks = new ArrayList<>();
+
+        while (bookCheck.equalsIgnoreCase("Y")) {
+            /* Program: What is the name of the book?
+                Program: What is genre of the book?
+                Program: How many pages does book have?
+             */
+            System.out.println("What is the name of the book?");
+            String bookName = input.nextLine();
+
+            System.out.println("What is genre of the book?");
+            String bookGenre = input.nextLine();
+
+            System.out.println("How many pages does book have?");
+            int page = input.nextInt();
+            input.nextLine();
+
+            Book bookInfo = new Book(bookName, bookGenre, page);
+            listOfBooks.add(bookInfo);
+
+            System.out.println("Would you like to enter book information? (Y/N)");
+            bookCheck = input.nextLine();
+        }
+
+        System.out.println(new Author(firstName, lastName, country, isAlive, age, listOfBooks));
     }
 }

@@ -7,17 +7,29 @@ public class Book {
      */
 
     //Create 3 args custom constructor here
-    //YOUR CODE HERE
+    public Book(String name, String genre, int page) {
+        this.name = name;
+        this.genre = genre;
+        this.page = page;
+    }
 
 
     //Define instance variables here
-    //YOUR CODE HERE
-
+    String name;
+    String genre;
+    int page;
 
 
     /*
         Override toString() method that returns Book object information
      */
-    //YOUR CODE HERE
 
+    @Override
+    public String toString() {
+        return "\nBook{" +
+                "name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                ", page=" + page +
+                "}";
+    }
 }
